@@ -1,0 +1,26 @@
+<div class="row">
+  <div style="display: block" class="col-md-6" >
+    <canvas mdbChart
+        [chartType]="chart1Type"
+        [data]="chart1Data"
+        [labels]="chart1Labels"
+        [colors]="chart1Colors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+  <div style="display: block" class="col-md-6" >
+    <canvas mdbChart
+      [chartType]="chart2Type"
+      [datasets]="chart2Datasets"
+      [labels]="chart2Labels"
+      [colors]="chart2Colors"
+      [options]="chart2Options"
+      [legend]="true"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
+</div>
