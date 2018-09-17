@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonService } from '../person.service';
+import { Router } from '@angular/router';
+import { Person } from '../../model/Person';
 
 @Component({
   selector: 'app-person-form',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonFormComponent implements OnInit {
 
-  constructor() { }
+  filter : Person;
+
+  constructor(private router: Router, private service: PersonService ) { 
+    this.filter = this.service.filter;
+  }
 
   ngOnInit() {
+   // this.valor = this.service.valor;
+  //  console.log('constructor ' + this.valor);
+  }
+
+  setValor() : void{
+   // this.service.valor = this.valor;
+  //  console.log('set ' + this.service.valor);
   }
 
 }

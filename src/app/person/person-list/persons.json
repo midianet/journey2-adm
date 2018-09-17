@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name" : "Marcos Fernando",
+        "gender" : { "id" : "M", "description" : "Masculino"},
+        "state" : { "id" : "S", "description" : "Selecionado"}
+    },
+    {
+        "id":2,
+        "name" : "Glauce Lima",
+        "gender" : { "id" : "F", "description" : "Feminino"},
+        "state" : { "id" : "S", "description" : "Selecionado"}
+    },
+    {
+        "id":3,
+        "name" : "Maria Luisa",
+        "gender" : { "id" : "F", "description" : "Feminino"},
+        "state" : { "id" : "S", "description" : "Selecionado"}
+    }
+]
