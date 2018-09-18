@@ -3,7 +3,7 @@
     <div class="form-bar">
         <button class="btn btn-primary" (click)="create()"><i class="fa fa-plus"></i> <span> Novo</span></button>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="form-group col-md-6">
             <label for="name">Nome</label>
             <input id="name" style="width: 100%" type="text" [(ngModel)]="filter.name" class="form-control" maxlength="80" placeholder="Nome"/>
@@ -25,7 +25,25 @@
         <div class="form-group col-md-1">
             <button type="button" class="btn-table btn-success pull-right" style="height: 37px; width: 37px; margin-top: 32px;"><i class="fa fa-search" ></i></button>
         </div>
-    </div>
-    <table datatable [dtOptions]="dtOptions" class="row-border hover" cellspacing="0" width="100%">
+    </div> -->
+    <button (click)="add()">Add</button>
+    <table datatable [dtOptions]="dtOptions" dtElement="dtElement" [dtTrigger]="dtTrigger"  class="row-border hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let person of list">
+                <td>{{ person.id }}</td>
+                <td>{{ person.name }}</td>
+                <td>
+                    <button class='btn-table btn-primary' (click)="edit(person.id)" style='margin-right:10px;'><i class='fa fa-pencil' ></i></button>
+                    <button class='btn-table btn-danger'  (click)="remove(person)"><i class='fa fa-trash-o'></i></button>
+                </td>
+              </tr>
+            </tbody>
     </table>
 </div>
