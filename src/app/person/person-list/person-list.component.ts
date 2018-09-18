@@ -52,7 +52,7 @@ export class PersonListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   remove(person : Person) : void{
     this.dtElement.dtInstance.then((d: DataTables.Api) =>{
-      console.log(d.selector);
+      //console.log(d.selector);
       //d.row(0).remove();
       //d.draw();
     });
