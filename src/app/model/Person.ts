@@ -2,16 +2,20 @@ import { Gender } from "./Gender";
 import { State } from "./State";
 
 export class Person {
-    id    : number;
-    name  : string;
-    gender : Gender;
-    state  : State;
-
-    // public constructor(id : number, name : string, gender : Gender, state : State){
-    //     this.id     = id;
-    //     this.name   = name;
-    //     this.gender = gender;
-    //     this.state  = state;
-    // }
+    id       : number;
+    telegram : number;
+    name     : string;
+    nickname : string;
+    gender   : Gender;
+    state    : State;
+    phone    : number;
+    cpf      : string;
+    rg       : string;
+    rgexped  : string;
+    register : Date;
+    assent   : number;
+    birthday : Date;
+    agreed   : any;
+    bedroom  : any;
 
 }

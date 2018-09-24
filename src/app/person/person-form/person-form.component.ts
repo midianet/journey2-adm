@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonService } from '../person.service';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Person } from '../../model/Person';
 
 @Component({
@@ -10,20 +9,23 @@ import { Person } from '../../model/Person';
 })
 export class PersonFormComponent implements OnInit {
 
-  filter : Person;
+  person: Person;
 
-  constructor(private router: Router, private service: PersonService ) { 
-    this.filter = this.service.filter;
+  constructor() { }
+
+  onSubmit(frm) {
+    console.log(frm);
   }
 
   ngOnInit() {
-   // this.valor = this.service.valor;
-  //  console.log('constructor ' + this.valor);
   }
 
-  setValor() : void{
-   // this.service.valor = this.valor;
-  //  console.log('set ' + this.service.valor);
+  verifiy(field) {
+      return !field.valid && field.touched;
+  }
+
+  showError(field) {
+    return {'is-invalid' : this.verifiy(field) };
   }
 
 }

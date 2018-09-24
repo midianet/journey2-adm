@@ -27,10 +27,11 @@ export class PersonListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.list   = this.service.list;
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 9,
+      pageLength: 8,
       language: { 
         zeroRecords: 'Sem Registros',
         info: 'Mostrando página _PAGE_ de _PAGES_',
+        infoEmpty : '',
         infoFiltered: " - filtrado de _MAX_ registros",
         paginate: { first: '«', previous: '‹', next: '›', last: '»' },
         processing: 'Processando...',
@@ -38,6 +39,7 @@ export class PersonListComponent implements OnInit, OnDestroy, AfterViewInit {
       responsive : true,
       searching: false,
       lengthChange: false,
+      stateSave : true,
     };
     this.dtTrigger.next();
   }
@@ -50,16 +52,16 @@ export class PersonListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.list.push({ id: 13 , name : "Adicionado", gender: {id: "M", description : "Masculino"}, state : {id: "S", description : "Selecionado"}});
   }
 
-  remove(person : Person) : void{
-    this.dtElement.dtInstance.then((d: DataTables.Api) =>{
-      //console.log(d.selector);
-      //d.row(0).remove();
-      //d.draw();
+  remove(person : Person, index : number) : void{
+     this.dtElement.dtInstance.then((d: DataTables.Api) =>{
+        this.list.forEach( (p, i) => {
+          if(p === person) {
+            this.list.splice(i,1);
+            d.destroy();
+            this.dtTrigger.next();
+          }
+      });
     });
-    
-    //  this.list.forEach( (p, i) => {
-    //    if(p === person) this.list.splice(i,1);
-    // });
   }
 
   edit(param : string ){

@@ -1,49 +1,57 @@
-<div class="dataTable_wrapper">
-    <legend class="section" style="font-weight: 600;"> Pessoas</legend>
-    <div class="form-bar">
-        <button class="btn btn-primary" (click)="create()"><i class="fa fa-plus"></i> <span> Novo</span></button>
+
+<legend class="section" style="font-weight: 600;"> Pessoas</legend>
+<div class= "row" >
+    <div class="col-md-12 action-buttons">
+        <button class="btn btn-primary pull-right" (click)="create()"><i class="fa fa-plus"></i> <span> Novo</span></button>
     </div>
-    <!-- <div class="row">
-        <div class="form-group col-md-6">
-            <label for="name">Nome</label>
-            <input id="name" style="width: 100%" type="text" [(ngModel)]="filter.name" class="form-control" maxlength="80" placeholder="Nome"/>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="gender">Sexo</label>
-            <select id="gender" style="width: 100%" data-placeholder="Selecione o Sexo" class="form-control" [(ngModel)]="filter.gender">
-                <option value="">Selecione</option>
-                <option [ngValue]="gender" *ngFor="let gender of genders()">{{gender.description}}</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="state">Situação</label>
-            <select id="state" style="width: 100%" class="form-control" placeholder="Selecione a Situação." [(ngModel)]="filter.state">
-                <option value="">Selecione</option>
-                <option [ngValue]="state" *ngFor="let state of states()">{{state.description}}</option>
-            </select>
-        </div>
-        <div class="form-group col-md-1">
-            <button type="button" class="btn-table btn-success pull-right" style="height: 37px; width: 37px; margin-top: 32px;"><i class="fa fa-search" ></i></button>
-        </div>
-    </div> -->
-    <button (click)="add()">Add</button>
-    <table datatable [dtOptions]="dtOptions" dtElement="dtElement" [dtTrigger]="dtTrigger"  class="row-border hover">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>First name</th>
-                <th>Ação</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let person of list">
-                <td>{{ person.id }}</td>
-                <td>{{ person.name }}</td>
-                <td>
-                    <button class='btn-table btn-primary' (click)="edit(person.id)" style='margin-right:10px;'><i class='fa fa-pencil' ></i></button>
-                    <button class='btn-table btn-danger'  (click)="remove(person)"><i class='fa fa-trash-o'></i></button>
-                </td>
-              </tr>
-            </tbody>
+</div>
+<div class="row"  style="margin-top: -5px;">
+    <div class="form-group col-md-7 col-sm-12">
+        <label for="name">Nome</label>
+        <input id="name" style="width: 100%" type="text" [(ngModel)]="filter.name" class="form-control" maxlength="80" placeholder="Nome"/>
+    </div>
+    <div class="form-group col-md-2 col-sm-12">
+        <label for="gender">Sexo</label>
+        <select id="gender" style="width: 100%" data-placeholder="Selecione o Sexo" class="form-control" [(ngModel)]="filter.gender">
+            <option value="">Selecione</option>
+            <option [ngValue]="gender" *ngFor="let gender of genders()">{{gender.description}}</option>
+        </select>
+    </div>
+    <div class="form-group col-md-2 col-sm-12">
+        <label for="state">Situação</label>
+        <select id="state" style="width: 100%" class="form-control" placeholder="Selecione a Situação." [(ngModel)]="filter.state">
+            <option value="">Selecione</option>
+            <option [ngValue]="state" *ngFor="let state of states()">{{state.description}}</option>
+        </select>
+    </div>
+    <div class="form-group col-md-1 col-sm-12 pull-right ">
+        <button type="button" class="btn-table btn-success pull-right" style="height: 37px; width: 37px; margin-top: 32px;"><i class="fa fa-search" ></i></button>
+    </div>
+</div>
+<!-- <button (click)="add()">Add</button> -->
+<div class="table-responsive">
+    <table datatable [dtOptions]="dtOptions" dtElement="dtElement"  [dtTrigger]="dtTrigger"  class="table  table-hover table-sm">
+        <thead class="thead-light">
+            <tr>
+                <th >Nome</th>
+                <th style="width: 50px; min-width: 50px;">Sexo</th>
+                <th style="width: 80px; min-width: 80px;">Situação</th>
+                <th style="width: 70px; min-width: 70px;" >Ação</th>
+                <!-- <th >Sexo</th>
+                <th >Situação</th>
+                <th >Ação</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of list ; let rowIndex = index">
+            <td>{{ person.name }}</td>
+            <td>{{ person.gender.description }}</td>
+            <td>{{ person.state.description }}</td>
+            <td>
+                <button class='btn-table btn-primary' (click)="edit(person.id)" style='margin-right:10px;'><i class='fa fa-pencil' ></i></button>
+                <button class='btn-table btn-danger'  (click)="remove(person,index)"><i class='fa fa-trash-o'></i></button>
+            </td>
+            </tr>
+        </tbody>
     </table>
 </div>

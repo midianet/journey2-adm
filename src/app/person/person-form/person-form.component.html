@@ -1,4 +1,82 @@
-<p>
-  person-form works!
-</p>
-<input id="name" style="width: 100%" type="text" [(ngModel)]="filter.name"  class="form-control" maxlength="80" placeholder="Nome"/>
+
+<legend class="section" style="font-weight: 600;"> Pessoas</legend>
+<div class= "row" >
+    <div class="col-md-12 action-buttons">
+        <button class="btn btn-warning   pull-right"><i class="fa fa-reply" ></i><span> Voltar</span></button>
+        <button class="btn btn-secondary pull-right" style="margin-right: 10px;"><i class="fa fa-eraser"></i><span> Limpar</span></button>
+        <button class="btn btn-primary   pull-right" style="margin-right: 10px;"><i class="fa fa-save"  ></i><span> Salvar</span></button>
+    </div>
+</div>
+<form #frm="ngForm" (ngSubmit)="onSubmit(frm)">
+    <div class="form-row">
+        <div class="form-group col-md-1">
+            <label for="cod">Código</label>
+            <input type="text" class="form-control" id="cod" name="cod"  disabled [(ngModel)]="person.id">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control"
+                    id="nome" placeholder="Informe o nome"
+                    name="nome" [(ngModel)]="person.name" required #nome="ngModel"
+                    [ngClass]="showError(nome)">
+            <div *ngIf="verifiy(name)" class="alert-message" role="alert">O campo é obrigatório</div>
+        </div>
+        <div class="form-group col-md-2">
+                <label for="">Apelido</label>
+                <input type="text" class="form-control"
+                        id="nickname" placeholder="Informe o apelido"
+                        name="nickname" [(ngModel)]="person.nickname" required #nickname="ngModel"
+                        [ngClass]="showError(nickname)">
+                <div *ngIf="verifiy(nickname)" class="alert-message" role="alert">O campo é obrigatório</div>
+        </div>
+      <!-- <div class="form-group col-md-12">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control"
+                id="email" name="email" placeholder="Informe o email"
+                [(ngModel)]="usuario.email" required email #email="ngModel"
+                [ngClass]="showError(email)">
+      </div>
+    </div>
+    <div  class="form-row" ngModelGroup="endereco">
+      <div class="form-group col-md-2">
+          <label for="cep">Cep</label>
+          <input type="text" class="form-control"
+                 id="cep" name="cep" placeholder="Informe o cep"
+                 [(ngModel)]="usuario.cep" required>
+      </div>
+      <div class="form-group col-md-10">
+          <label for="complemento">Complemento</label>
+          <input type="text" class="form-control"
+                  id="complemento" name="complemento" placeholder="Informe o complemento de endereço"
+                  [(ngModel)]="usuario.complemento" required>
+      </div>
+      <div class="form-group col-md-12">
+          <label for="endereco">Endereço</label>
+          <input type="text" class="form-control"
+                  id="endereco" name="endereco" placeholder="Informe o endereço"
+                  [(ngModel)]="usuario.endereco" required>
+      </div>
+      <div class="form-group col-md-5">
+          <label for="bairro">Bairro</label>
+          <input type="text" class="form-control"
+                  id="bairro" name="bairro" placeholder="Informe o bairro"
+                  [(ngModel)]="usuario.bairro" required>
+      </div>
+      <div class="form-group col-md-4">
+          <label for="cidade">Cidade</label>
+          <input type="text" class="form-control"
+                  id="cidade" name="cidade" placeholder="Informe a Cidade"
+                  [(ngModel)]="usuario.cidade" required>
+      </div>
+      <div class="form-group col-md-3">
+          <label for="uf">UF</label>
+          <input type="text" class="form-control"
+                  id="uf" name="uf" placeholder="Informe a UF"
+                  [(ngModel)]="usuario.uf" required>
+      </div> -->
+    </div>
+    <!-- <div class="form-row">
+      <button type="submit" class="btn btn-primary" [disabled]="!frm.valid">Submit</button>
+    </div> -->
+</form>
+  
